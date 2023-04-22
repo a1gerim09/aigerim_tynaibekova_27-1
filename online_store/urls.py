@@ -1,5 +1,5 @@
 """
-URL configuration for onlain_store project.
+URL configuration for online_store project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,13 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import hello
-from posts.views import now_date
-from posts.views import goodbye
+from products.views import main_view, products_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', hello),
-    path('now_date/', now_date, name='now_date'),
-    path('goodbye/', goodbye, name='goodbye'),
+    path('', main_view),
+    path('products/', products_view)
 ]
