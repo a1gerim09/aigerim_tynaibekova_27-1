@@ -1,0 +1,27 @@
+{% extends 'layouts/index.html' %}
+
+{% block content %}
+    <style type="text/css">
+        .product_block {
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 50px;
+        }
+        .dates{
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <div class="product_block">
+        <dif class="info">
+            <h1>{{ product.name }}</h1>
+            <h4>{{ product.description }}</h4>
+            <h5>Price: {{ product.price }}</h5>
+            <dif> class="dates">
+                <h5>Created Date {{ product.created_date }}</h5>
+                <h5>Modified Date {{ product.modified_date }}</h5>
+            </dif>
+        </dif>
+    </div>
+{% endblock %}
