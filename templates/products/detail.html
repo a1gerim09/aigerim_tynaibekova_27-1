@@ -7,13 +7,30 @@
             margin-left: 10%;
             margin-top: 50px;
         }
+        .product_block > img {
+            width: 100%;
+        }
         .dates{
             margin-top: 20px;
             display: flex;
             justify-content: space-between;
         }
+        .reviews {
+            margin-top: 30px;
+        }
+        .reviews {
+            background: #242b2e;
+            margin-bottom: 20px;
+            color: #ffffff;
+            padding: 10px;
+        }
     </style>
     <div class="product_block">
+        {% if product.image %}
+            <img src="/media/{{ product.image }}" alt="">
+        {% else %}
+            <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="">
+        {% endif %}
         <dif class="info">
             <h1>{{ product.name }}</h1>
             <h4>{{ product.description }}</h4>
@@ -23,5 +40,12 @@
                 <h5>Modified Date {{ product.modified_date }}</h5>
             </dif>
         </dif>
+        <div class="reviews">
+            {% for review in reviews %}
+                <div class="review_block">
+                    <h5>{{ review.text }}</h5>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
