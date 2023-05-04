@@ -31,21 +31,29 @@
         {% else %}
             <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="">
         {% endif %}
-        <dif class="info">
+        <div class="info">
             <h1>{{ product.name }}</h1>
             <h4>{{ product.description }}</h4>
             <h5>Price: {{ product.price }}</h5>
-            <dif> class="dates">
+            <div> class="dates">
                 <h5>Created Date {{ product.created_date }}</h5>
                 <h5>Modified Date {{ product.modified_date }}</h5>
-            </dif>
-        </dif>
+            </div>
+        </div>
         <div class="reviews">
-            {% for review in reviews %}
+            {% for revie in review %}
                 <div class="review_block">
-                    <h5>{{ review.text }}</h5>
+                    <h5>{{ revie.text }}</h5>
                 </div>
             {% endfor %}
         </div>
     </div>
+
+
+  <h3>Add a Review</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
 {% endblock %}
