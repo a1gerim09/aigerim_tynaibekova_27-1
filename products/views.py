@@ -8,7 +8,10 @@ from products.models import Product, Review
 
 def main_view(request):
     if request.method == 'GET':
-        return render(request, 'layouts/index.html')
+        context = {
+            'user': request.user
+        }
+        return render(request, 'layouts/index.html', context=context)
 
 
 def products_view(request):
@@ -16,7 +19,8 @@ def products_view(request):
         products = Product.objects.all()
 
         context = {
-            'products': products
+            'products': products,
+            'user': request.user
         }
         return render(request, 'products/products.html', context=context)
 
@@ -28,7 +32,8 @@ def product_detail_view(request, id):
         context = {
             'product': product,
             'review': product.review_set.all(),
-            'form': ReviewCreateForm
+            'form': ReviewCreateForm,
+            'user': request.user
         }
 
         return render(request, 'products/detail.html', context=context)
